@@ -1,10 +1,12 @@
 package pl.edu.pwr.pkuchnowski.FillTheFormAPI;
 
+import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -55,7 +57,7 @@ public class FormGetter {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
+    public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
         // Load client secrets.
         InputStream in = FormGetter.class.getClassLoader().getResourceAsStream(CREDENTIALS_FILE_PATH);
@@ -74,11 +76,16 @@ public class FormGetter {
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
-    public static String getLink(String firstName, String lastName, String emailAddress, String phoneNumber, String orderNumber, String orderDate, String[] orderElements, String[] quantities) throws GeneralSecurityException, IOException {
+
+    public static Credential createCredentialWithAccessTokenOnly(NetHttpTransport HTTP_TRANSPORT, String accessToken) {
+        return new Credential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
+    }
+    public static String getLink(String accessToken,String firstName, String lastName, String emailAddress, String phoneNumber, String orderNumber, String orderDate, String[] orderElements, String[] quantities) throws GeneralSecurityException, IOException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        
         Script service =
-                new Script.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                new Script.Builder(HTTP_TRANSPORT, JSON_FACTORY, createCredentialWithAccessTokenOnly(HTTP_TRANSPORT, accessToken))
                         .setApplicationName(APPLICATION_NAME)
                         .build();
 
