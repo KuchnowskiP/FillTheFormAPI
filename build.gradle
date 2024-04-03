@@ -27,3 +27,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootJar {
+	archiveBaseName = 'fill-the-form-api'
+	archiveVersion = '0.0.1'
+}
