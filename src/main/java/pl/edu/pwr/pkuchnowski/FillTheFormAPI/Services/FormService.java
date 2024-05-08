@@ -6,6 +6,8 @@ import java.security.GeneralSecurityException;
 /**
  * This interface represents a contract for a service that interacts with a forms service.
  * The implementing class should use the provided parameters to generate a form link.
+ *
+ * @author Piotr Kuchnowski
  */
 
 public interface FormService {

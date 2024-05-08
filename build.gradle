@@ -38,10 +38,10 @@ javadoc {
 		encoding 'UTF-8'
 		charSet 'UTF-8'
 		links 'https://docs.oracle.com/en/java/javase/17/docs/api/'
-		title = "Fill the form API Documentation"
+		title = "FillTheForm API Documentation"
 		memberLevel = JavadocMemberLevel.PRIVATE
 		author = true
 		version = true
 	}
-	destinationDir = file("javadoc")
+	destinationDir = file("build/docs/javadoc")
 }

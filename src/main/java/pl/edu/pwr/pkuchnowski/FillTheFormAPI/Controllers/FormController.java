@@ -19,6 +19,8 @@ import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Response.FormLinkDTO;
  * Controller class for handling requests from the client.
  * This class handles requests to retrieve form links from Google Forms and to test the server status.
  * It interacts with the FormGetter class to retrieve form links and constructs appropriate responses based on the results.
+ *
+ * @author Piotr Kuchnowski
  */
 
 @RestController

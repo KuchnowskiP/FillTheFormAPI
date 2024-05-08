@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Main class of the FillTheFormAPI application.
- * This application is designed to interact with Google Forms via Google Apps Script. It generates - based on the template form -
- * forms and retrieve form links.
+ * @version 1.0: the application interacts with Google Forms via Google Apps Script. It generates - based on the template form -
+ * pre-filled form and retrieve its links.
  * It uses Google's API Script and OAuth2 for authentication and execution of pre-fill script that
  * pre-fills Google Form with provided customer and order data.
+ *
+ * @author Piotr Kuchnowski
  */
 @SpringBootApplication
 public class FillTheFormApiApplication {

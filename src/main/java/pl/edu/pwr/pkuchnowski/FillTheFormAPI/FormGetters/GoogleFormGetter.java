@@ -21,6 +21,10 @@ import java.util.Map;
  * This class interacts with Google Forms to retrieve form links.
  * It uses Google's API Script and OAuth2 for authentication and execution of scripts.
  * This class implements the FormService interface.
+ *
+ * @see FormService
+ *
+ * @author Piotr Kuchnowski
  */
 
 public class GoogleFormGetter implements FormService{
@@ -28,7 +32,13 @@ public class GoogleFormGetter implements FormService{
      * ID of the Google Apps Script executable - ID of the script that will be executed. Obtainable from script settings.
      */
     private static final String APIExecutableId = "AKfycbyKjQKRyukrx-GeoXWbOlYCq_-UuIVX4pTzRr3gXVwhdMwJUaIsTm9_ByS4hnPsj6nU";
+    /**
+     * The name of the application passed to the Google API.
+     */
     private static final String APPLICATION_NAME = "FillTheFormAPI";
+    /**
+     * The JSON factory used to create JSON objects.
+     */
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
     /**
