@@ -16,6 +16,8 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.script.Script;
 import com.google.api.services.script.model.ExecutionRequest;
 import com.google.api.services.script.model.Operation;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,7 +31,6 @@ import java.util.Map;
 
 public class FormGetter {
     private static String APIExecutableId = "AKfycbyKjQKRyukrx-GeoXWbOlYCq_-UuIVX4pTzRr3gXVwhdMwJUaIsTm9_ByS4hnPsj6nU";
-    private static String formId = "1Yy1k7on8E45bXYqbeZaD-Ki_XJKn1Za91vPdPc-KlJQ";
     private static String firstName = "Jan";
     private static String lastName = "Kowalski";
     private static String emailAddress = "jan.kowalski@example.com";
@@ -80,7 +81,7 @@ public class FormGetter {
     public static Credential createCredentialWithAccessTokenOnly(NetHttpTransport HTTP_TRANSPORT, String accessToken) {
         return new Credential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
     }
-    public static String getLink(String accessToken,String firstName, String lastName, String emailAddress, String phoneNumber, String orderNumber, String orderDate, String[] orderElements, String[] quantities) throws GeneralSecurityException, IOException {
+    public static String getLink(String accessToken, String formId, String firstName, String lastName, String emailAddress, String phoneNumber, String orderNumber, String orderDate, String[] orderElements, String[] quantities) throws GeneralSecurityException, IOException, JSONException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         
@@ -104,7 +105,8 @@ public class FormGetter {
                 Map<String, Object> errorDetails = (Map<String, Object>) op.getError().getDetails().get(0);
                 String errorMessage = (String) errorDetails.get("errorMessage");
                 System.out.println("Script error message: " + errorMessage);
-                return "Script error message: " + errorMessage;
+
+                return "Error message: " + errorMessage;
             } else {
                 // The result provided by the API needs to be cast into the correct type,
                 // based upon what types the Apps Script function returns. Here, the function
@@ -114,7 +116,7 @@ public class FormGetter {
                 System.out.println(result.toString());
                 return result.toString();
             }
-        }catch(GoogleJsonResponseException e) {
+        }catch(GoogleJsonResponseException e){
             // The API encountered a problem before the script was called.
             e.printStackTrace(System.out);
             return e.getMessage();
