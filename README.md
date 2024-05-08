@@ -21,12 +21,14 @@ To run this project, you need to:
 2. Navigate to the project directory
 3. Run the Spring Boot application
 
+On Linux:
 ```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
-./gradlew bootRun
+./gradlew bootRun # If permission denied, run 'chmod +x gradlew' before
 ```
-```Windows cmd
+On Windows:
+```console
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 gradlew :bootRun
