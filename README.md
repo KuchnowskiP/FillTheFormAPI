@@ -28,7 +28,7 @@ cd FillTheFormAPI
 ./gradlew bootRun # If permission denied, run 'chmod +x gradlew' before
 ```
 On Windows:
-```console
+```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 gradlew :bootRun
