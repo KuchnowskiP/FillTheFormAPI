@@ -50,16 +50,4 @@ public class FormController {
         return ResponseEntity.ok().body("Hello");
     }
 
-    @RequestMapping(value = "/me", method = RequestMethod.GET)
-    public ResponseEntity<CredentialDTO> me(@RequestHeader(value="Authorization") String authorizationHeader) throws GeneralSecurityException, IOException {
-        String accessToken = authorizationHeader.split(" ")[1];
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        Credential credential = FormGetter.createCredentialWithAccessTokenOnly(HTTP_TRANSPORT, accessToken);
-        if(credential == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        CredentialDTO credentialDTO = new CredentialDTO(credential.getAccessToken(), credential.getRefreshToken());
-        return ResponseEntity.ok().body(credentialDTO);
-    }
-
 }
