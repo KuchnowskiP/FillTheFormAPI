@@ -32,3 +32,8 @@ On Windows:
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 gradlew :bootRun
+```
+
+### Documentation
+
+If you run this application on your local machine, you can acccess Javadoc at localhost:8085/javadoc 
