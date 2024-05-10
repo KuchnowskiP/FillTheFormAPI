@@ -25,10 +25,15 @@ On Linux:
 ```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
-./gradlew bootRun # If permission denied, run 'chmod +x gradlew' before
+sudo ./gradlew bootRun # If permission denied, run 'sudo chmod +x gradlew' before
 ```
 On Windows:
 ```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 gradlew :bootRun
+```
+
+### Documentation
+
+If you run this application on your local machine, you can acccess Javadoc at localhost:8085/javadoc 
