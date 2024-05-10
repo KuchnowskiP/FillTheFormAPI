@@ -22,7 +22,7 @@ import java.util.Map;
  * It uses Google's API Script and OAuth2 for authentication and execution of scripts.
  * This class implements the FormService interface.
  *
- * @see FormService
+ * @see FormService <a href="https://developers.google.com/apps-script/api/quickstart/java?hl=pl">Google Apps Script API Java Quickstart</a>
  *
  * @author Piotr Kuchnowski
  */

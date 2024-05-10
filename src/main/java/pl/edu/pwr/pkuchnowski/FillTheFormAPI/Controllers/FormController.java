@@ -68,13 +68,4 @@ public class FormController {
         }
         return ResponseEntity.ok().body(formLinkDTO); //return form link
     }
-    /**
-     * Handles a request to test the server status.
-     * This method returns a simple "Hello" message with a 200 status code.
-     * @return A Response Entity containing the "Hello" message.
-     */
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok().body("Hello");
-    }
 }
