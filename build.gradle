@@ -38,7 +38,7 @@ tasks.named('test') {
 
 bootJar {
 	archiveBaseName = 'fill-the-form-api'
-	archiveVersion = '1.0'
+	archiveVersion = '1.4'
 }
 
 javadoc {

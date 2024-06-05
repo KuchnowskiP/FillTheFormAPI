@@ -3,6 +3,8 @@ package pl.edu.pwr.pkuchnowski.FillTheFormAPI.Controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.view.RedirectView;
@@ -27,7 +29,8 @@ public class CustomErrorController implements ErrorController {
      * <p>This method is invoked when an error occurs and redirects the user to a 404 page.
      */
     @GetMapping("/error")
-    public void handleError(HttpServletRequest request ,HttpServletResponse response) throws IOException {
-        response.sendRedirect("/404.html");
+    public ResponseEntity<String> handleError() throws IOException {
+        ClassPathResource resource = new ClassPathResource("static/404.html");
+        return ResponseEntity.status(404).body(new String(resource.getInputStream().readAllBytes()));
     }
 }

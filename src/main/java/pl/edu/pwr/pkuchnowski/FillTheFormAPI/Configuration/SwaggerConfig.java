@@ -5,9 +5,17 @@ import io.swagger.v3.oas.models.info.Info;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+/**
+ * Swagger configuration class.
+ */
 @Configuration
 public class SwaggerConfig {
-
+    /**
+     * Custom OpenAPI configuration.
+     * <p>This method creates a custom OpenAPI configuration with the title, version, and description of the API.
+     * @return the custom OpenAPI configuration.
+     */
     @Bean
     OpenAPI customOpenAPI() {
         return new OpenAPI()

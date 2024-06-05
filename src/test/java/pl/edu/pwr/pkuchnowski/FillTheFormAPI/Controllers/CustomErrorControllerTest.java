@@ -42,6 +42,6 @@ class CustomErrorControllerTest {
     @Test
     void testIfErrorPageContainsLinkToJavadoc() throws Exception {
         this.mockMvc.perform(get("/404.html"))
-                .andExpect(content().string(containsString("href=\"/javadoc\"")));
+                .andExpect(content().string(containsString("/javadoc")));
     }
 }

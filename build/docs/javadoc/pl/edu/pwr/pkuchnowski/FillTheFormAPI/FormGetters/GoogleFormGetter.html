@@ -90,12 +90,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a></code></dd>
+<dd><code><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a>&lt;com.google.api.services.script.model.Operation&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GoogleFormGetter</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a></span></div>
+implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a>&lt;com.google.api.services.script.model.Operation&gt;</span></div>
 <div class="block">This class interacts with Google Forms to retrieve form links.
  It uses Google's API Script and OAuth2 for authentication and execution of scripts.
  This class implements the FormService interface.</div>
@@ -104,8 +104,8 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <dd>Piotr Kuchnowski</dd>
 <dt>See Also:</dt>
 <dd>
-<ul class="tag-list">
-<li><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services"><code>FormService</code></a></li>
+<ul class="tag-list-long">
+<li><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services"><code><a href="https://developers.google.com/apps-script/api/quickstart/java?hl=pl">Google Apps Script API Java Quickstart</a></code></a></li>
 </ul>
 </dd>
 </dl>
@@ -124,7 +124,7 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <div class="col-first even-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="#APIExecutableId" class="member-name-link">APIExecutableId</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">ID of the Google Apps Script executable - ID of the script that will be executed.</div>
+<div class="block">ID of the Google Apps Script executable - ID of a deployment of the script.</div>
 </div>
 <div class="col-first odd-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#APPLICATION_NAME" class="member-name-link">APPLICATION_NAME</a></code></div>
@@ -168,7 +168,7 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a Google API Credential object using the provided access token.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.api.services.script.model.Operation</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFormLink(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String%5B%5D,java.lang.String%5B%5D)" class="member-name-link">getFormLink</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;accessToken,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;formId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;firstName,
@@ -208,7 +208,7 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <section class="detail" id="APIExecutableId">
 <h3>APIExecutableId</h3>
 <div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">APIExecutableId</span></div>
-<div class="block">ID of the Google Apps Script executable - ID of the script that will be executed. Obtainable from script settings.</div>
+<div class="block">ID of the Google Apps Script executable - ID of a deployment of the script.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -297,7 +297,7 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <li>
 <section class="detail" id="getFormLink(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String[],java.lang.String[])">
 <h3>getFormLink</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getFormLink</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;accessToken,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.google.api.services.script.model.Operation</span>&nbsp;<span class="element-name">getFormLink</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;accessToken,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;formId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;firstName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lastName,
@@ -307,14 +307,14 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;orderDate,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;orderElements,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;quantities)</span>
-                   throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/GeneralSecurityException.html" title="class or interface in java.security" class="external-link">GeneralSecurityException</a>,
+                                                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/GeneralSecurityException.html" title="class or interface in java.security" class="external-link">GeneralSecurityException</a>,
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Retrieves a form link from Google Forms using the provided parameters.
  It executes Google Apps Script that generates new form based on template form and pre-fills the new form with customer and order data.
  This method is an implementation of the getFormLink method from the FormService interface.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../Services/FormService.html#getFormLink(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String%5B%5D,java.lang.String%5B%5D)">getFormLink</a></code>&nbsp;in interface&nbsp;<code><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a></code></dd>
+<dd><code><a href="../Services/FormService.html#getFormLink(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String%5B%5D,java.lang.String%5B%5D)">getFormLink</a></code>&nbsp;in interface&nbsp;<code><a href="../Services/FormService.html" title="interface in pl.edu.pwr.pkuchnowski.FillTheFormAPI.Services">FormService</a>&lt;com.google.api.services.script.model.Operation&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>accessToken</code> - The access token obtained from Google OAuth2.</dd>
 <dd><code>formId</code> - The ID of the form.</dd>
@@ -327,10 +327,16 @@ implements <a href="../Services/FormService.html" title="interface in pl.edu.pwr
 <dd><code>orderElements</code> - The products of the order.</dd>
 <dd><code>quantities</code> - The quantities of the products.</dd>
 <dt>Returns:</dt>
-<dd>The form link if the operation is successful, or an error message if the operation fails.</dd>
+<dd>Operation object containing result with a link or an error.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/GeneralSecurityException.html" title="class or interface in java.security" class="external-link">GeneralSecurityException</a></code> - If a security exception occurs while creating the script service.</dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - If an I/O error occurs while creating the script service.</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list-long">
+<li><a href="https://developers.google.com/resources/api-libraries/documentation/script/v1/java/latest/com/google/api/services/script/model/Operation.html">Google Apps Script API Operation</a></li>
+</ul>
+</dd>
 </dl>
 </section>
 </li>

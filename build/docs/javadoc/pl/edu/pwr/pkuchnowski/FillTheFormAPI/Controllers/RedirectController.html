@@ -92,9 +92,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="annotations">@RestController
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">RedirectController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Redirect controller to handle redirects to the Javadoc.
+<div class="block">Redirect controller to handle redirects to the Javadoc and Swagger UI.
 
- <p>This class implements a controller that redirects the user to the Javadoc when the user accesses the `/javadoc` endpoint.</div>
+ <p>This class implements a controller that redirects the user to the Javadoc when the user accesses the `/javadoc` endpoint and
+ to the Swagger UI when the user accesses the `/swagger-ui` endpoint. It sends a redirect response to the client to redirect the user to the appropriate page.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Piotr Kuchnowski</dd>
@@ -131,6 +132,21 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Redirects the user to the Javadoc.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleJavadocSlash(jakarta.servlet.http.HttpServletResponse)" class="member-name-link">handleJavadocSlash</a><wbr>(jakarta.servlet.http.HttpServletResponse&nbsp;response)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Redirects the user to the Javadoc.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleSwaggerUI(jakarta.servlet.http.HttpServletResponse)" class="member-name-link">handleSwaggerUI</a><wbr>(jakarta.servlet.http.HttpServletResponse&nbsp;response)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Redirects the user to the Swagger UI.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleSwaggerUISlash(jakarta.servlet.http.HttpServletResponse)" class="member-name-link">handleSwaggerUISlash</a><wbr>(jakarta.servlet.http.HttpServletResponse&nbsp;response)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Redirects the user to the Swagger UI.</div>
+</div>
 </div>
 </div>
 </div>
@@ -165,13 +181,67 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="handleJavadoc(jakarta.servlet.http.HttpServletResponse)">
 <h3>handleJavadoc</h3>
-<div class="member-signature"><span class="annotations">@RequestMapping("/javadoc")
+<div class="member-signature"><span class="annotations">@GetMapping("/javadoc")
 </span><span class="return-type">void</span>&nbsp;<span class="element-name">handleJavadoc</span><wbr><span class="parameters">(jakarta.servlet.http.HttpServletResponse&nbsp;response)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Redirects the user to the Javadoc.
 
  <p>This method is invoked when the user accesses the `/javadoc` endpoint.
  It redirects the user to the Javadoc by sending a redirect response to the client.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>response</code> - the HttpServletResponse to send the redirect response to.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - if an I/O error occurs while sending the redirect response.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="handleJavadocSlash(jakarta.servlet.http.HttpServletResponse)">
+<h3>handleJavadocSlash</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/javadoc/")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">handleJavadocSlash</span><wbr><span class="parameters">(jakarta.servlet.http.HttpServletResponse&nbsp;response)</span>
+                 throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Redirects the user to the Javadoc.
+
+ <p>This method is invoked when the user accesses the `/javadoc/` endpoint.
+ It redirects the user to the Javadoc by sending a redirect response to the client.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>response</code> - the HttpServletResponse to send the redirect response to.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - if an I/O error occurs while sending the redirect response.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="handleSwaggerUI(jakarta.servlet.http.HttpServletResponse)">
+<h3>handleSwaggerUI</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/swagger-ui")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">handleSwaggerUI</span><wbr><span class="parameters">(jakarta.servlet.http.HttpServletResponse&nbsp;response)</span>
+              throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Redirects the user to the Swagger UI.
+
+ <p>This method is invoked when the user accesses the `/swagger-ui` endpoint.
+ It redirects the user to the Swagger UI by sending a redirect response to the client.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>response</code> - the HttpServletResponse to send the redirect response to.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - if an I/O error occurs while sending the redirect response.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="handleSwaggerUISlash(jakarta.servlet.http.HttpServletResponse)">
+<h3>handleSwaggerUISlash</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/swagger-ui/")
+</span><span class="return-type">void</span>&nbsp;<span class="element-name">handleSwaggerUISlash</span><wbr><span class="parameters">(jakarta.servlet.http.HttpServletResponse&nbsp;response)</span>
+                   throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Redirects the user to the Swagger UI.
+
+ <p>This method is invoked when the user accesses the `/swagger-ui/` endpoint.
+ It redirects the user to the Swagger UI by sending a redirect response to the client.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>response</code> - the HttpServletResponse to send the redirect response to.</dd>
