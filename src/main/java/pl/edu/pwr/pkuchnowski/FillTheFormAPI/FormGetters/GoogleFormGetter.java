@@ -5,8 +5,8 @@ import com.google.api.services.script.Script;
 import com.google.api.services.script.model.ExecutionRequest;
 import com.google.api.services.script.model.Operation;
 import com.google.api.services.script.model.Status;
-import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.GoogleAuthorizer;
-import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.IGoogleAuthorizer;
+import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.Authorizer;
+import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.IScriptServiceProvider;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -23,12 +23,6 @@ import java.util.Arrays;
  */
 
 public class GoogleFormGetter extends FormGetter<Operation> {
-
-    /**
-     * The GoogleAuthenticator object used to authenticate with Google APIs.
-     */
-    private final IGoogleAuthorizer googleAuthorizer;
-
     /**
      * ID of the Google Apps Script executable - ID of a deployment of the script.
      */
@@ -47,16 +41,20 @@ public class GoogleFormGetter extends FormGetter<Operation> {
 
     private final String accessToken;
 
+    private final IScriptServiceProvider scriptServiceProvider;
+    private final Authorizer authorizer;
+
     /**
      * Creates a GoogleFormGetter object with the provided form ID and access token.
      * @param formId The ID of the form.
      * @param accessToken The access token obtained from Google OAuth2.
      */
 
-    public GoogleFormGetter(String formId, String accessToken) {
+    public GoogleFormGetter(String formId, String accessToken, Authorizer authorizer, IScriptServiceProvider scriptServiceProvider) {
         this.formId = formId;
         this.accessToken = accessToken;
-        this.googleAuthorizer = new GoogleAuthorizer(accessToken);
+        this.scriptServiceProvider = scriptServiceProvider;
+        this.authorizer = authorizer;
     }
 
     /**
@@ -85,8 +83,8 @@ public class GoogleFormGetter extends FormGetter<Operation> {
                                      String[] orderElements, String[] quantities)
             throws GeneralSecurityException, IOException {
 
-        googleAuthorizer.authorize(); // Create an authorized API client
-        Script service = googleAuthorizer.getScriptService();
+        authorizer.authorize(); // Create an authorized API client
+        Script service = scriptServiceProvider.getScriptService();
 
         // Execute App Script script with given ID
         ExecutionRequest request = new ExecutionRequest()

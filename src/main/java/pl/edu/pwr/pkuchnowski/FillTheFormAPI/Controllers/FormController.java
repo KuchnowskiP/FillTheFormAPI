@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.Authorizer;
+import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.GoogleAuthorizer;
+import pl.edu.pwr.pkuchnowski.FillTheFormAPI.Authorization.IScriptServiceProvider;
 import pl.edu.pwr.pkuchnowski.FillTheFormAPI.FormGetters.GoogleFormGetter;
 
 import java.io.IOException;
@@ -60,7 +63,9 @@ public class FormController {
                                                    @RequestParam("quantity") String[] elementQuantities)
             throws GeneralSecurityException, IOException {
         String accessToken = authorizationHeader.split(" ")[1]; //acess token extraction
-        FormGetter<Operation> googleFormGetter = new GoogleFormGetter(formId, accessToken); //creating GoogleFormGetter object
+        Authorizer authorizer = new GoogleAuthorizer(accessToken); //creating GoogleAuthorizer object
+        IScriptServiceProvider scriptServiceProvider = new GoogleAuthorizer(accessToken); //creating GoogleAuthorizer object
+        FormGetter<Operation> googleFormGetter = new GoogleFormGetter(formId, accessToken, authorizer, scriptServiceProvider); //creating GoogleFormGetter object
         Operation result = googleFormGetter.getFormResponse(firstName, lastName, email, phone, orderNumber,
                 orderDate, orderElements, elementQuantities); //getting Apps Script operation result
         if(result.getError() != null){ //if error occurred

@@ -11,23 +11,26 @@ import com.google.api.services.script.Script;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-public class GoogleAuthorizer extends Authorizer implements IGoogleAuthorizer {
+public class GoogleAuthorizer extends Authorizer implements IScriptServiceProvider {
 
     private static final String APPLICATION_NAME = "FillTheFormAPI";
 
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
-    private Script scriptService;
+    /**
+     * The Google API Script service.
+     */
+    private static Script scriptService;
 
     private final String accessToken;
+
+    public GoogleAuthorizer(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
     @Override
     public Script getScriptService() {
         return scriptService;
-    }
-
-    public GoogleAuthorizer(String accessToken) {
-        this.accessToken = accessToken;
     }
 
     /**
@@ -36,11 +39,13 @@ public class GoogleAuthorizer extends Authorizer implements IGoogleAuthorizer {
      * @return A Google API Credential object.
      */
 
-    @Override
     public Credential createCredential(String accessToken) {
         return new Credential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
     }
 
+    /**
+     * Authorizes the Google API Script service using the provided access token.
+     */
     @Override
     public void authorize() {
         final NetHttpTransport HTTP_TRANSPORT;
@@ -49,7 +54,7 @@ public class GoogleAuthorizer extends Authorizer implements IGoogleAuthorizer {
         } catch (GeneralSecurityException | IOException e) {
             throw new RuntimeException(e);
         }
-        this.scriptService = new Script.Builder(HTTP_TRANSPORT, JSON_FACTORY, createCredential(accessToken))
+        scriptService = new Script.Builder(HTTP_TRANSPORT, JSON_FACTORY, createCredential(accessToken))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
     }
