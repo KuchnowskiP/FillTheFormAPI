@@ -1,5 +1,5 @@
 /**
- * This package contains the main classes for the FillTheFormAPI application.
+ * This package contains the main class for the FillTheFormAPI application.
  * <p>
  * The application is built using Spring Boot and Gradle. It includes several components:
  * <ul>
