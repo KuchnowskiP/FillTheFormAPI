@@ -19,11 +19,4 @@ public class FormLinkDTO {
     public FormLinkDTO(String link) {
         this.link = link;
     }
-    /**
-     * Getter for the form link.
-     * @return The link to the form.
-     */
-    public String getLink() {
-        return link;
-    }
 }

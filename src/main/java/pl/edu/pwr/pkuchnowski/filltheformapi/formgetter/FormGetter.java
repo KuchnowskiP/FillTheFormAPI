@@ -25,7 +25,7 @@ public interface FormGetter<T> {
      * @throws GeneralSecurityException if a security error occurs
      * @throws IOException if an I/O error occurs
      */
-    public abstract T getFormResponse(String firstName, String lastName,
+    T getFormResponse(String firstName, String lastName,
                                       String emailAddress, String phoneNumber, String orderNumber, String orderDate,
                                       String[] orderElements, String[] quantities) throws GeneralSecurityException, IOException;
 }

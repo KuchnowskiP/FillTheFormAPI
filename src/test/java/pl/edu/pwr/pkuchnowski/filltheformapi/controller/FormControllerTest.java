@@ -43,7 +43,7 @@ class FormControllerTest {
 
     /**
      * Test if getFormLink returns 200 OK
-     * @throws Exception
+     * @throws Exception If an error occurs
      */
 
     @ParameterizedTest
@@ -53,7 +53,7 @@ class FormControllerTest {
     })
     void getFormLink(String token, String formId, String firstName, String lastName, String email, String phone, String orderNumber, String orderDate, String element, String quantity) throws Exception {
         Operation operation = new Operation();
-        operation.setResponse(new HashMap<>(Map.of("result", "http://example.com")));
+        operation.setResponse(new HashMap<>(Map.of("result", "https://example.com")));
 
         when(formService.getGoogleFormResponse(
                 argThat(arg -> arg != null && !arg.isEmpty()),
