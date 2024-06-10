@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 /**
- * This abstract class represents a contract for a method that interacts with the selected forms service.
+ * This interface is a contract for a method that, when implemented, is intended to interact with the selected forms service.
  * @param <T> The type of the form service response.
  */
 public interface FormGetter<T> {
