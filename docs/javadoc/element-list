@@ -1,8 +1,0 @@
-module:FillTheFormAPI.main
-pl.edu.pwr.pkuchnowski.filltheformapi
-pl.edu.pwr.pkuchnowski.filltheformapi.authorization
-pl.edu.pwr.pkuchnowski.filltheformapi.configuration
-pl.edu.pwr.pkuchnowski.filltheformapi.controller
-pl.edu.pwr.pkuchnowski.filltheformapi.formgetter
-pl.edu.pwr.pkuchnowski.filltheformapi.response
-pl.edu.pwr.pkuchnowski.filltheformapi.service

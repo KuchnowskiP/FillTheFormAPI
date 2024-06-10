@@ -51,7 +51,7 @@ javadoc {
 		author = true
 		version = true
 	}
-	destinationDir = file("docs/javadoc")
+	destinationDir = file("docs")
 }
 
 
