@@ -31,6 +31,9 @@ class FormControllerTest {
     @MockBean
     private FormService formService;
 
+    @Autowired
+    private FormController formController;
+
     /**
      * Test if context loads
      */
@@ -39,6 +42,7 @@ class FormControllerTest {
     void contextLoads() {
         assertNotNull(formService);
         assertNotNull(mockMvc);
+        assertNotNull(formController);
     }
 
     /**
