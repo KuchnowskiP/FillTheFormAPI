@@ -35,5 +35,5 @@ gradlew :bootRun
 ```
 
 ### Documentation
-
+Documentation is availabale at https://kuchnowskip.github.io/FillTheFormAPI/
 If you run this application on your local machine, you can acccess Javadoc at localhost:8085/javadoc 
