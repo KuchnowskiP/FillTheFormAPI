@@ -30,7 +30,7 @@ public class MvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String javadocPath = System.getProperty("javadoc.path", "./build/docs/javadoc/");
+        String javadocPath = System.getProperty("javadoc.path", "./docs/javadoc/");
         registry.addResourceHandler("/javadoc/**")
                 .addResourceLocations("file:" + javadocPath);
         System.out.println("Javadoc path: " + javadocPath);

@@ -19,4 +19,12 @@ public class FormLinkDTO {
     public FormLinkDTO(String link) {
         this.link = link;
     }
+    /**
+     * Getter for the link field.
+     * @return The link to the form.
+     * It is crucial to have this getter method in order to http response body to be serialized correctly.
+     */
+    public String getLink() {
+        return link;
+    }
 }

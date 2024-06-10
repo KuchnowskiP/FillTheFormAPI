@@ -85,6 +85,8 @@ public class FormController {
         Operation result = formService.getGoogleFormResponse(formId, accessToken, firstName, lastName, email, phone,
                 orderNumber, orderDate, orderElements, elementQuantities);
 
+        System.out.println(result.getResponse().get("result").toString());
+
 
         if(result.getError() != null){ //if error occurred
             for(HttpStatus status : HttpStatus.values()){
