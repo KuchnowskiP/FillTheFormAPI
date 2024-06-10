@@ -22,14 +22,17 @@ To run this project, you need to:
 3. Run the Spring Boot application
 
 On Linux:
+```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 sudo ./gradlew bootRun # If permission denied, run 'sudo chmod +x gradlew' before
-
+```
 On Windows:
+```bash
 git clone https://github.com/KuchnowskiP/FillTheFormAPI.git
 cd FillTheFormAPI
 gradlew :bootRun
+```
 
 ## Endpoints
 
